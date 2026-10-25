@@ -1,0 +1,24 @@
+kind = "mobile"
+previewPath = "/savmny-mobile/"
+title = "SAVMNY Mobile"
+description = "A mobile companion for SAVMNY that lets Indian users track INR transactions, set monthly budgets, and maintain investment holdings on their device."
+version = "1.0.0"
+id = "artifacts/savmny-mobile"
+router = "expo-domain"
+
+[[services]]
+name = "expo"
+ensurePreviewReachable = "/status"
+paths = [ "/savmny-mobile/" ]
+localPort = 21651
+
+[services.development]
+run = "pnpm --filter @workspace/savmny-mobile run dev"
+
+[services.production]
+build = [ "pnpm", "--filter", "@workspace/savmny-mobile", "run", "build" ]
+run = [ "pnpm", "--filter", "@workspace/savmny-mobile", "run", "serve" ]
+
+[services.env]
+PORT = "21651"
+BASE_PATH = "/savmny-mobile/"
