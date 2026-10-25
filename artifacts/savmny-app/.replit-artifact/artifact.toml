@@ -1,0 +1,28 @@
+kind = "web"
+previewPath = "/"
+title = "SAVMNY"
+description = "A personal finance web app for tracking day-to-day spending, budgets, and investment holdings in one place, with INR-based totals and persistent manual records."
+version = "1.0.0"
+id = "artifacts/savmny-app"
+router = "path"
+
+[[services]]
+name = "web"
+paths = [ "/" ]
+localPort = 22904
+
+[services.development]
+run = "pnpm --filter @workspace/savmny-app run dev"
+
+[services.production]
+build = [ "pnpm", "--filter", "@workspace/savmny-app", "run", "build" ]
+serve = "static"
+publicDir = "artifacts/savmny-app/dist/public"
+
+[[services.production.rewrites]]
+from = "/*"
+to = "/index.html"
+
+[services.env]
+PORT = "22904"
+BASE_PATH = "/"

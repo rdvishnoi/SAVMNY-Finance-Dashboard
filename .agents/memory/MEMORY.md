@@ -1,0 +1,1 @@
+- [SAVMNY data scope](savmny-data-scope.md) — finance records are manual and browser-local; do not imply bank/broker sync or real money movement.
